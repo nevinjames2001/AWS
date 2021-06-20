@@ -1,0 +1,40 @@
+package com.example.demo;
+
+
+import java.io.Console;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.springframework.http.converter.xml.SourceHttpMessageConverter;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/nevinjames")
+public class WelcomeController {
+
+    @GetMapping("/Welcome")
+    public String welcome(){
+        return "Hello World!";
+    }
+
+ 
+
+    @GetMapping("/google")
+    public static int[] main(URL args) throws IOException{
+        URL url = new URL("https://www.google.com/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        int status=con.getResponseCode();
+        int status1=con.getContentLength();
+        int status3=con.getReadTimeout();
+        int[] returns=new int[]{status,status1,status3};
+        String cookies=con.getResponseMessage();
+        
+        return returns;
+        
+
+    }
+}
